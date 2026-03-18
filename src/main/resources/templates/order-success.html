@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Success | Smart Canteen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff7f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .success-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            max-width: 420px;
+            width: 90%;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .success-card h1 {
+            color: #ff7a18;
+            margin-bottom: 10px;
+        }
+
+        .success-card p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background: #ff7a18;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .buttons a:hover {
+            background: #e56700;
+        }
+
+        .secondary {
+            background: #1e3a8a;
+        }
+
+        .secondary:hover {
+            background: #162b63;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-card">
+    <div class="success-icon">🎉</div>
+
+       
+       <h2 th:text="${name} + ', your order is placed successfully!'"></h2>
+
+       <p>Your food will be prepared soon.  
+       Please collect it from the canteen counter.</p>
+
+    <div class="buttons">
+        <a th:href="@{/menu}">🍽 Back to Menu</a>
+        <a th:href="@{/student/dashboard}" class="secondary">🏠 Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>

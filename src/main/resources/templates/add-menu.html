@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Menu Item | Smart Canteen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff7f0;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff7a18;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ff7a18;
+        }
+
+        /* Form Card */
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            background: #ff7a18;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e56700;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>Add Menu Item ➕</h1>
+</div>
+
+<!-- Form -->
+<div class="form-container">
+
+    <form th:action="@{/admin/menu/add}" method="post">
+
+        <label>Food Name</label>
+        <input type="text" name="foodName" required>
+
+        <label>Price (₹)</label>
+        <input type="number" name="price" step="0.01" required>
+
+        <label>Category</label>
+        <input type="text" name="category" required>
+        
+        <label>Food Image</label>
+		<input type="text" name="image" placeholder="example: idly.jpg">
+        
+
+        <label>Available</label>
+        <select name="available">
+            <option value="true">Available</option>
+            <option value="false">Sold Out</option>
+        </select>
+        
+        
+        <button class="btn" type="submit">Add Item</button>
+    </form>
+
+    <div class="links">
+        <a th:href="@{/admin/menu/list}">View Menu</a> |
+        <a th:href="@{/admin/dashboard}">Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

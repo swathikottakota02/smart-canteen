@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Verify OTP | Smart Canteen</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fff7f0;
+}
+
+/* Header */
+.header{
+    background:white;
+    padding:20px;
+    text-align:center;
+    border-bottom:3px solid #ff7a18;
+}
+
+.header h1{
+    margin:0;
+    color:#ff7a18;
+}
+
+/* Container */
+.otp-container{
+    max-width:450px;
+    margin:60px auto;
+    padding:20px;
+}
+
+/* Card */
+.otp-card{
+    background:white;
+    border-radius:14px;
+    padding:30px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Form */
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    color:#333;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+/* Button */
+button{
+    width:100%;
+    padding:10px;
+    background:#ff7a18;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e56700;
+}
+
+/* Back link */
+.back{
+    text-align:center;
+    margin-top:20px;
+}
+
+.back a{
+    text-decoration:none;
+    font-weight:bold;
+    color:#1e3a8a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+<h1>OTP Verification 🔐</h1>
+</div>
+
+<div class="otp-container">
+
+<div class="otp-card">
+
+<form action="/verify-otp" method="post">
+
+<div class="form-group">
+<label>Enter OTP</label>
+<input type="text" name="otp" placeholder="Enter OTP sent to your email" required>
+</div>
+
+<button type="submit">Verify OTP</button>
+
+</form>
+
+<div class="back">
+<a th:href="@{/register}">← Back to Register</a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

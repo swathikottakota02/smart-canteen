@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Menu | Smart Canteen</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#fff7f0;
+}
+
+/* Header */
+
+.header{
+background:white;
+padding:20px;
+text-align:center;
+border-bottom:3px solid #ff7a18;
+}
+
+.header h1{
+margin:0;
+color:#ff7a18;
+}
+
+.header p{
+color:#555;
+margin-top:5px;
+}
+
+/* Menu container */
+
+.menu-container{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:30px;
+padding:40px;
+}
+
+/* Menu card */
+
+.menu-card{
+background:white;
+border-radius:14px;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+padding:20px;
+text-align:center;
+}
+
+.menu-card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.menu-card h3{
+margin:15px 0 5px;
+color:#333;
+}
+
+.menu-card p{
+margin:0;
+color:#777;
+font-size:14px;
+}
+
+.price{
+font-size:18px;
+font-weight:bold;
+color:#ff7a18;
+margin:10px 0;
+}
+
+.menu-card a{
+display:inline-block;
+padding:10px 18px;
+background:#ff7a18;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+.menu-card a:hover{
+background:#e56700;
+}
+
+/* Bottom links */
+
+.bottom-links{
+text-align:center;
+margin-bottom:40px;
+}
+
+.bottom-links a{
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+color:#1e3a8a;
+}
+
+/* Empty menu */
+
+.empty{
+text-align:center;
+color:#777;
+font-size:18px;
+padding:50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+
+<div class="header">
+<h1>Today's Menu 🍽️</h1>
+<p>Fresh & hot from Sanskrithi Canteen</p>
+</div>
+
+<!-- Menu -->
+
+<div class="menu-container">
+
+<div class="empty" th:if="${menuItems == null || menuItems.isEmpty()}">
+No food items available today.
+</div>
+
+<div class="menu-card" th:each="item : ${menuItems}">
+
+<img th:src="@{'/images/' + ${item.image}}" alt="Food">
+
+
+<h3 th:text="${item.foodName}">Food Name</h3>
+
+<p th:text="${item.category}">Category</p>
+
+<div class="price">
+₹<span th:text="${item.price}">0</span>
+</div>
+
+<a th:href="@{/cart/add/{id}(id=${item.id})}">
+Add to Cart
+</a>
+
+</div>
+
+</div>
+
+<!-- Bottom links -->
+
+<div class="bottom-links">
+
+<a th:href="@{/cart/view}">🛒 View Cart</a>
+
+<a th:href="@{/student/dashboard}">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

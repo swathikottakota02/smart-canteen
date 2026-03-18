@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Cart | Smart Canteen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff7f0;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff7a18;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ff7a18;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        th {
+            background: #ff7a18;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .empty {
+            text-align: center;
+            color: #777;
+            font-size: 18px;
+            padding: 30px;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .actions button {
+            padding: 10px 20px;
+            background: #ff7a18;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background: #e56700;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .links a {
+            margin: 0 15px;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Your Cart 🛒</h1>
+</div>
+
+<div class="cart-container">
+
+    <!-- EMPTY CART -->
+    <div class="empty" th:if="${cartItems == null or cartItems.isEmpty()}">
+        Your cart is empty.
+    </div>
+
+    <!-- CART TABLE -->
+    <table th:if="${cartItems != null and !cartItems.isEmpty()}">
+        <tr>
+            <th>Food Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+
+        <tr th:each="item : ${cartItems}">
+            <td th:text="${item.key.foodName}">Food</td>
+            <td th:text="${item.key.price}">0</td>
+            <td th:text="${item.value}">1</td>
+        </tr>
+    </table>
+    <!-- TOTAL AMOUNT -->
+<div class="actions" th:if="${cartItems != null and !cartItems.isEmpty()}">
+    <h3 style="margin-bottom:15px;">
+        Total Amount: ₹<span th:text="${totalAmount}">0</span>
+    </h3>
+
+    <form th:action="@{/order/place}" method="post">
+        <!-- <button type="submit">Place Order</button> -->
+    </form>
+</div>
+
+	
+
+    <!-- PLACE ORDER -->
+    <div class="actions" th:if="${cartItems != null and !cartItems.isEmpty()}">
+        <form th:action="@{/order/place}" method="post">
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="links">
+    <a th:href="@{/menu}">← Back to Menu</a>
+    <a th:href="@{/student/dashboard}">Dashboard</a>
+</div>
+
+</body>
+</html>

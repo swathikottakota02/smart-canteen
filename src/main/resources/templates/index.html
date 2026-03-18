@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Canteen | SSE</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff7f0;
+}
+
+/* ================= HEADER ================= */
+.header {
+    background: linear-gradient(to right, #ff7a18, #e65c00);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+.header p {
+    margin-top: 8px;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* ================= HERO ================= */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 80px;
+    background: #fffaf5;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    max-width: 520px;
+}
+
+.hero-text .tag {
+    background: #ffe5d0;
+    color: #ff7a18;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.hero-text h2 {
+    font-size: 44px;
+    margin: 20px 0;
+    color: #333;
+}
+
+.hero-text h2 span {
+    color: #ff7a18;
+}
+
+.hero-text p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.hero-image img {
+    width: 420px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ================= ROLES ================= */
+.roles {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 280px;
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 30px;
+    text-align: center;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.card p {
+    color: #666;
+    font-size: 14px;
+    margin: 15px 0 25px;
+}
+
+.card a {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #ff7a18;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.card a:hover {
+    background: #e65c00;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .header {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 6vw;
+    }
+
+    .header p {
+        font-size: 4vw;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h2 {
+        font-size: 8vw;
+    }
+
+    .hero-text p {
+        font-size: 4vw;
+    }
+
+    .hero-image img {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .roles {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Sanskriti School of Engineering</h1>
+    <p>Smart Canteen Food Ordering System</p>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+
+    <div class="hero-text">
+        <span class="tag">🍽 Digital Food Ordering</span>
+        <h2>Order Smart,<br><span>Eat Fresh</span></h2>
+        <p>
+            A seamless digital canteen platform for students, faculty,
+            and administrators to place orders, manage menus,
+            and track food preparation in real time.
+        </p>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" alt="Canteen">
+    </div>
+
+</div>
+
+<!-- ROLES -->
+<div class="roles">
+
+    <div class="card">
+        <h2>Admin Login</h2>
+        <p>Manage menu items, monitor orders, and control canteen operations.</p>
+        <a th:href="@{/admin/login}">Login as Admin →</a>
+    </div>
+
+    <div class="card">
+        <h2>Faculty Login</h2>
+        <p>Browse today’s menu, place quick orders, and track order status.</p>
+        <a th:href="@{/faculty/login}">Login as Faculty →</a>
+    </div>
+
+    <div class="card">
+        <h2>Student Login</h2>
+        <p>Explore the menu, add items to cart, and place orders easily.</p>
+        <a th:href="@{/student/login}">Login as Student →</a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Smart Canteen | Final Year B.Tech Project
+</div>
+
+</body>
+</html>

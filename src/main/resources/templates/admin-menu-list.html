@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Menu List</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #ff7a18;
+            color: white;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Admin – Menu Items</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Food Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Action</th>
+    </tr>
+
+    <!-- THIS LOOP IS THE KEY -->
+    <tr th:each="item : ${menuItems}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.foodName}"></td>
+        <td th:text="${item.category}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.available}"></td>
+        <td>
+            <a th:href="@{/admin/menu/delete/{id}(id=${item.id})}">
+                Delete
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+	<div style="text-align:center; margin-top:30px;">
+	    <a th:href="@{/admin/dashboard}" 
+	       style="
+	       padding:10px 20px;
+	       background:#1e3a8a;
+	       color:white;
+	       text-decoration:none;
+	       border-radius:6px;
+	       font-weight:bold;">
+	       ← Back to Dashboard
+	    </a>
+	</div>
+
+</body>
+</html>

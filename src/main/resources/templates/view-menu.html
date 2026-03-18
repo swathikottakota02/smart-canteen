@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Menu | Smart Canteen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff7f0;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff7a18;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ff7a18;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #ff7a18;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            background: #ff7a18;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e56700;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            font-weight: bold;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>Admin Menu List 🍽️</h1>
+</div>
+
+<!-- Table -->
+<div class="container">
+
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Price (₹)</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="item : ${menuItems}">
+            <td th:text="${item.foodName}">Food</td>
+            <td th:text="${item.price}">0</td>
+            <td>
+                <a class="btn" th:href="@{/cart/add/{id}(id=${item.id})}">
+                    Add to Cart
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="back">
+        <a th:href="@{/admin/dashboard}">← Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

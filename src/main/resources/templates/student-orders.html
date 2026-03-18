@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Orders | Smart Canteen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff7f0;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff7a18;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ff7a18;
+        }
+
+        /* Orders container */
+        .orders-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Order card */
+        .order-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .order-id {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .order-time {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Status badge */
+        .status {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            color: white;
+        }
+
+        .PLACED {
+            background: #2563eb; /* blue */
+        }
+
+        .PREPARING {
+            background: #f59e0b; /* amber */
+        }
+
+        .READY {
+            background: #16a34a; /* green */
+        }
+
+        .COMPLETED {
+            background: #6b7280; /* gray */
+        }
+
+        /* No orders */
+        .empty {
+            text-align: center;
+            color: #777;
+            margin-top: 60px;
+            font-size: 18px;
+        }
+
+        /* Back link */
+        .back {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>My Orders 📦</h1>
+</div>
+
+<div class="orders-container">
+
+    <!-- No orders -->
+    <div class="empty" th:if="${orders == null || orders.isEmpty()}">
+        You have not placed any orders yet.
+    </div>
+
+    <!-- Orders list -->
+    <div class="order-card" th:each="order : ${orders}">
+        <div class="order-id">
+            Order ID: <span th:text="${order.id}"></span>
+        </div>
+
+        <div class="order-time">
+            Ordered on: <span th:text="${#temporals.format(order.orderTime, 'dd MMM yyyy, hh:mm a')}"></span>
+        </div>
+
+        <div>
+            Status:
+            <span class="status"
+                  th:text="${order.status}"
+                  th:classappend="' ' + ${order.status}">
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<!-- Back -->
+<div class="back">
+    <a th:href="@{/student/dashboard}">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>
