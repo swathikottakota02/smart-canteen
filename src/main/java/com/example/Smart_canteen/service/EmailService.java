@@ -18,9 +18,14 @@ public class EmailService {
             message.setSubject("OTP Verification - Smart Canteen");
             message.setText("Your OTP is: " + otp);
 
-            mailSender.send(message);
+//            mailSender.send(message);
+         // mailSender.send(message);   ❌ DISABLE THIS
+
+            System.out.println("OTP: " + otp);  
 
             System.out.println("✅ OTP sent successfully to: " + email);
+         // emailService.sendOtp(email, otp);
+            System.out.println("OTP: " + otp);
 
         } catch (Exception e) {
             System.out.println("❌ ERROR SENDING MAIL");
