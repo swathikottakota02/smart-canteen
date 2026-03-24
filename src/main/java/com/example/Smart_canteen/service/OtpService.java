@@ -12,7 +12,7 @@ public class OtpService {
         int otp = 100000 + random.nextInt(900000);
         return String.valueOf(otp);
     }
-}
+}x`
 
 
 //package com.example.Smart_canteen.service;
