@@ -36,7 +36,7 @@ public class EmailService {
             sender.put("email", "swathikottakota02@gmail.com");
 
             body.put("to", new Object[]{to});
-            body.put("sender", sender);  // ✅ IMPORTANT
+            body.put("sender", sender); 
             body.put("subject", "OTP Verification - Smart Canteen");
             body.put("textContent", "Your OTP is: " + otp);
 
